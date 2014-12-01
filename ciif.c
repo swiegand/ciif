@@ -1,10 +1,26 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "art.h"
+
+void Usage(char *filename)
+{
+	printf("Usage:\n%s \"<string>\"\n", filename);
+	printf("No more than 15 Characters for input string\n");
+}
+
 
 int main(int argc, char *argv[])
 {
-	unsigned long inputlength = strlen(argv[1]) + 1;
+	if(argc != 2 || strlen(argv[1]) > 15) {
+		Usage(argv[0]);
+		exit(1);
+	
+	}
+
+	printf(ART,argv[1]);
+
+/*	unsigned long inputlength = strlen(argv[1]) + 1;
 	int i = 0;
 	char *underscores;
 	char *hyphons;
@@ -25,7 +41,7 @@ int main(int argc, char *argv[])
 
 	fp = fopen("art", "r");
 	
-/*	while (!feof(fp)) {
+	while (!feof(fp)) {
 		if (fgets(str,60,fp)) {
 			if (i == 3) {
 			printf("%s%s",str,underscores);
@@ -36,7 +52,7 @@ int main(int argc, char *argv[])
 			}
 		}
 	}
-*/
+
 	c = getc(fp);
 	while (c != EOF) {
 		if(c == '\n') {i++;}
@@ -57,5 +73,5 @@ int main(int argc, char *argv[])
 			c = getc(fp);
 		}
 	}
-	fclose(fp);
+	fclose(fp);*/
 }
